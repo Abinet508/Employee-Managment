@@ -1,0 +1,144 @@
+﻿@model EmployeeManager.Models.Employee
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body, main {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: max-content;
+        background: white;
+    }
+
+    .pb-3, .py-3 {
+        padding-bottom: 0rem !important;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #registration_container {
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        height: 200%;
+    }
+
+    .row * {
+        width: 100%;
+        vertical-align: middle;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    #registration {
+        color: white;
+        height: 100%;
+        justify-content: center;
+        background: #FFFFFF;
+        border: 2px solid Transparent;
+        background: #374151;
+    }
+
+    #registrationimg {
+        display: inline-block;
+        justify-content: center;
+    }
+
+    #CreateEmployeeTitle {
+        text-align: left;
+        /* display: inline-block; */
+        width: 100%;
+       
+        padding-left: 3rem;
+        color: #FF6B00;
+    }
+
+    #createtitele {
+        color: white;
+    }
+
+    #Register {
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+        background: #FF6B00;
+        border: 1px solid #FF6B00;
+        border-radius: 4px;
+    }
+
+    #Notregistered{
+        text-align: right;
+        padding-top: 3rem;
+        padding-right: 1rem;
+      
+    }
+
+    #Notregistered a{
+        
+        color: #FF6B00;
+    }
+
+</style>
+<div id="registration_container">
+    <div id="registrationimg">
+        <div>
+        </div>
+    </div>
+   
+    <div id="registration">
+        <p id="Notregistered">
+             Not Registered? <a asp-action="Create">Create an Account</a>
+        </p>
+        <div id="CreateEmployeeTitle">
+            <h6>Hello! <i>👋</i></h6>
+
+            <h6 id="createtitele">Welcome back</h6>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*<div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>*@
+                  
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label mb-0"></label>
+                        <input asp-for="Email" class="form-control mt-0" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label mb-0"></label>
+                        <input asp-for="Password" class="form-control mt-0" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="Register" value="Login" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @*<div>
+        <a asp-action="Index">Back to List</a>
+        </div>*@
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
